@@ -22,4 +22,5 @@ Welcome to documentation for the UDCP CLI!
    :maxdepth: 1
    :caption: Usage
 
-   deployment/overview.rst 
+   deployment/overview.rst
+   deployment/usage.rst 
