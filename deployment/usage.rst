@@ -8,17 +8,33 @@ We will cover following operations using the CLI tool:
 * Append entry to the Datasets to the UDCP
 
 
+List of Available Commands:
+-------------------------
+To see the list of available options invoke the executable help command:
+    
+        $ java -jar leap-cli.jar -h
+    
+        Usage: <main class> [-hV] [-t=<token>] [COMMAND]
+            Command for UDCP CLI
+            -h, --help            Show this help message and exit.
+            -t, --token=<token>   Auth Token to pass when using Auth Passthrough Mode!
+            -V, --version         Print version information and exit.
+        Commands:
+        upload, push
+        process, proc
+        download, pull
+        userinfo, user
+        dev, test
+
+
+
+
+
+
+
 Dataset Listing
 --------------
 
+To list the content repositories, use the following command:
 
-
-
-To run the UDCP CLI, the following requirement must be met on the host:
-
-    JRE, versions 1.8 or 11 `Download <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_
-
-
-Download UDCP CLI
--------------------
-Current releases of the UDCP CLI can be found from the project site.
+    $ java -jar leap-cli.jar process -l
