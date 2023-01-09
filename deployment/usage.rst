@@ -11,8 +11,9 @@ We will cover following operations using the CLI tool:
 List of Available Commands:
 -------------------------
 To see the list of available options invoke the executable help command:
+  ..  code-block:: shell
     
-        $ java -jar leap-cli.jar -h
+     $ java -jar leap-cli.jar -h
     
         Usage: <main class> [-hV] [-t=<token>] [COMMAND]
             Command for UDCP CLI
