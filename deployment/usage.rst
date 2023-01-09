@@ -11,7 +11,7 @@ We will cover following operations using the CLI tool:
 List of Available Commands:
 -------------------------
 To see the list of available options invoke the executable help command:
-  ..  code-block:: shell
+  ..  code-block:: console
     
      $ java -jar leap-cli.jar -h
     
@@ -37,5 +37,6 @@ Dataset Listing
 --------------
 
 To list the content repositories, use the following command:
-
+ ..  code-block:: console
+    
     $ java -jar leap-cli.jar process -l
