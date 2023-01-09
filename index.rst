@@ -20,12 +20,6 @@ Welcome to documentation for the UDCP CLI!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Development
-
-   development/overview.rst   
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Deployment
+   :caption: Usage
 
    deployment/overview.rst 
