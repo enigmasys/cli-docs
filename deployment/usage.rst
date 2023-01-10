@@ -136,10 +136,13 @@ To find the usage of the command execute following command:
                                 url or file
         -validate
 
+
 To perform upload operation to the UDCP repositories one could execute following example command:
 
+
 .. code-block:: console
-    java -jar leap-cli.jar upload -p 06ae4327-ad66-4608-b1eb-3655a5342d67 -f  ./input/metadata.json -d ./input
+    java -jar leap-cli.jar upload -p 06aewe7-ad66-4608-b1eb-3655a5342d67 -f  ./input/metadata.json -d ./input
+
 
 Description:
 Here `-f` points to the metadata file.
