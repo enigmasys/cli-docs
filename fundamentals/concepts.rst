@@ -5,7 +5,7 @@ The Unified Data and Compute Platform (UDCP) command line tool (UDCP-CLI) provid
 UDCP. The CLI comes with security enabled features which authenticates users and services providing secure access
 to the UDCP.
 
-.. figure:: cli_flow.png
+.. figure:: cli-flow.png
     :align: center
 
     Example UDCP Command line utility access control flow for Upload/Download to/from UDCP
