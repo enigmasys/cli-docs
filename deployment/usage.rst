@@ -70,7 +70,7 @@ To find the usage of the command execute following command:
 
 .. code-block:: console
 
-    java -jar leap-cli.jar download -h
+    $java -jar leap-cli.jar download -h
     2023-01-10 10:27:50.464  INFO 96591 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Starting EnigmaApplicationKt using Java 17.0.2 on isislab with PID 96591 (/Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs/secretapp-0.0.1-SNAPSHOT.jar started by yogeshbarve in /Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs)
     2023-01-10 10:27:50.470  INFO 96591 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : The following profiles are active: device
     2023-01-10 10:27:52.135  INFO 96591 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Started EnigmaApplicationKt in 2.411 seconds (JVM running for 3.199)
@@ -90,7 +90,7 @@ To download the data from the content repositories we would need the unique iden
 
 .. code-block:: console
 
-    java -jar leap-cli.jar download -p 06ae4327-ad66-4608-b1eb-3655a5342d67 -d ./output
+    $java -jar leap-cli.jar download -p 06ae4327-ad66-4608-b1eb-3655a5342d67 -d ./output
 
     2023-01-10 10:24:21.288  INFO 96510 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Starting EnigmaApplicationKt using Java 17.0.2 on isislab with PID 96510 (/Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs/secretapp-0.0.1-SNAPSHOT.jar started by yogeshbarve in /Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs)
     2023-01-10 10:24:21.292  INFO 96510 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : The following profiles are active: device
@@ -117,7 +117,7 @@ To find the usage of the command execute following command:
 
 .. code-block:: console
 
-    ~/Projects/rest-tutorials/enigma/secretapp/build/libs$java -jar leap-cli.jar push -h
+    $java -jar leap-cli.jar push -h
     2023-01-10 10:34:44.240  INFO 96763 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Starting EnigmaApplicationKt using Java 17.0.2 on isislab with PID 96763 (/Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs/secretapp-0.0.1-SNAPSHOT.jar started by yogeshbarve in /Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs)
     2023-01-10 10:34:44.244  INFO 96763 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : The following profiles are active: device
     2023-01-10 10:34:45.584  INFO 96763 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Started EnigmaApplicationKt in 1.913 seconds (JVM running for 2.409)
