@@ -141,6 +141,7 @@ To perform upload operation to the UDCP repositories one could execute following
 
 
 .. code-block:: console
+    
     java -jar leap-cli.jar upload -p 06aewe7-ad66-4608-b1eb-3655a5342d67 -f  ./input/metadata.json -d ./input
 
 
