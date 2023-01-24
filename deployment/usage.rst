@@ -4,8 +4,8 @@ Usage
 We will cover following operations using the CLI tool:
 
 * Listing of Datasets(also known as processes) Information
-* Download entries from the the UDCP
-* Append entry to the Datasets to the UDCP
+* Download records from the the UDCP
+* Upload records to the content repository on the UDCP
 
 
 List of Available Commands:
@@ -13,21 +13,58 @@ List of Available Commands:
 To see the list of available options invoke the executable help command:
   ..  code-block:: console
     
-     $ java -jar leap-cli.jar -h
+    $java -jar leap_cli.jar -h
+    Usage: <main class> [-hV] [-t=<token>] [COMMAND]
+    Command for accessing the UDCP
+    -h, --help            Show this help message and exit.
+    -t, --token=<token>   Auth Token to pass when using Auth Passthrough Mode!
+    -V, --version         Print version information and exit.
+    Commands:
+    upload, push
+    process, proc, repository, repo
+    download, pull
+    userinfo, user
+
+Login
+------
+
+To access the UDCP, we are required to login to the UDCP. To login to the UDCP, we need to login through the browser using the following user command option.
+Help listing for the user command can be invoked using the following command:
+
+  ..  code-block:: console
+
+    $java -jar leap_cli.jar user -h
+    Usage: <main class> userinfo [-hosV] [-t=<token>]
+    -h, --help              Show this help message and exit.
+    -o, --logout            Logout from this Application
+    -s, --login, --status   Display the Status of this Application/User.
+    -t, --token=<token>     Auth Token to pass when using Auth Passthrough Mode!
+    -V, --version           Print version information and exit.
+
+To login issue following command:
+
+ .. code-block:: console
+    $java -jar leap_cli.jar user --login
+    To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FPP2356LE to authenticate.
+        {
+    "userId" : "qweaf4-asdwae-49bd-9997-asd345",
+    "permission" : "Administrator",
+    "administrator" : false,
+    "registrationApprover" : false
+    }
+
+The user will need to provide the code displayed on the console to the browser to login to the UDCP. Accept any security permissions asked.
+If the user has the required permission to the UDCP, the user will be logged in successfully.
+
+When logged successfully, the user information is stored in the currently running folder of the leap_cli.jar executable directory.
+
+To logout issue following command:
+
+    .. code-block:: console
+        $java -jar leap_cli.jar user --logout
+        Login Functionality..
+        User Logged out successful
     
-        Usage: <main class> [-hV] [-t=<token>] [COMMAND]
-            Command for UDCP CLI
-            -h, --help            Show this help message and exit.
-            -t, --token=<token>   Auth Token to pass when using Auth Passthrough Mode!
-            -V, --version         Print version information and exit.
-        Commands:
-        upload, push
-        process, proc
-        download, pull
-        userinfo, user
-        dev, test
-
-
 
 Dataset Listing
 --------------
@@ -38,77 +75,198 @@ An example execution of the command is shown below:
 
  ..  code-block:: console
 
-    $ java -jar leap-cli.jar process -l
-
-    2023-01-10 10:07:04.894  INFO 96134 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Starting EnigmaApplicationKt using Java 17.0.2 on isislab with PID 96134 (/Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs/secretapp-0.0.1-SNAPSHOT.jar started by yogeshbarve in /Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs)
-    2023-01-10 10:07:04.899  INFO 96134 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : The following profiles are active: device
-    2023-01-10 10:07:06.657  INFO 96134 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Started EnigmaApplicationKt in 2.6 seconds (JVM running for 3.654)
-    2023-01-10 10:07:09.641  INFO 96134 --- [           main] common.util                              : 
-    [ {
-    "description" : "test for CWL demo holding patient cohort",
-    "processId" : "bdas77ab-15b3-48bf-8c15-3259278b25c4",
-    "processType" : "TestSim",
-    "function" : false
-    }, {
-    "description" : "CWL patient cohort data",
-    "processId" : "71ecb2312-c13e-48ee-b2ed-a067c646f1ae",
-    "processType" : "TestSim",
-    "function" : false
-    },]
-
+    $ java -jar leap_cli.jar repo -l
+    =============================================
+    Repository ID                         | Content Type | Description              | Is Function
+    9b119f79-69de-4278-ba8e-df9953e3ab9e  |  demodataset  |  Demo1  |  false
+    87dc1607-5d63-4073-9424-720f86ecef43  |  demoworkflow  |  WorkflowDemo1  |  false
+    6e9da372-8cc7-4b11-bf85-23ed9d83a301  |  vutest  |  TestRepo1  |  false
+    ae0f62d0-854b-4696-8c7d-54e89e04308e  |  vutest  |  TestRepo2  |  false
+    dbad238e-287c-4515-b89f-740a2e5b57d5  |  vutest  |  TestRepo3  |  false
+    0e86da05-f79a-48fa-8776-de5f5b2b00aa  |  vutest  |  TestRepo4  |  false
+    0d215d9f-1f5b-4a61-b63b-af3c37a85da0  |  vutest  |  TestRepo5  |  false
+    7ef2f867-27de-436a-bee0-af2c65cdd1b3  |  SADemo  |  Input patient cohort for the suicide attemtp example  |  false
+    =============================================
 Description:
  
-The processId is the unique identifier for the process. 
-The processType is the type of process. 
+The Repository ID is the unique identifier for the process. 
+The Content Type is the content type name for the repository. 
 The description is the description of the process. 
 The function is a boolean value that indicates whether the process is a function or not.
 
+
+
 Download Data
 --------------
-
 To find the usage of the command execute following command:
 
 .. code-block:: console
 
-    $java -jar leap-cli.jar download -h
-    2023-01-10 10:27:50.464  INFO 96591 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Starting EnigmaApplicationKt using Java 17.0.2 on isislab with PID 96591 (/Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs/secretapp-0.0.1-SNAPSHOT.jar started by yogeshbarve in /Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs)
-    2023-01-10 10:27:50.470  INFO 96591 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : The following profiles are active: device
-    2023-01-10 10:27:52.135  INFO 96591 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Started EnigmaApplicationKt in 2.411 seconds (JVM running for 3.199)
-    Usage: <main class> download [-hm] -d=<dir> [-i=<obsIndex>] [-o=<observerID>]
-                                -p=<processID> [-t=<token>]
+    $java -jar leap_cli.jar download -h
+    Usage: <main class> download [-hm] -d=<dir> [-i=<obsIndex>] -p=<processID>
+                                [-t=<token>]
     -d, --dir=<dir>          Directory Path
-    -h, --help               Utility for Test Commandline Options...
-    -i, --index=<obsIndex>   Observer ID
-    -m, --metadata           Download all Observations(without datafiles)
-    -o, --oid=<observerID>   Observer ID
-    -p, --process=<processID>
-                            ProcessID
+    -h, --help               Helps in downloading of records from a repository.
+    -i, --index=<obsIndex>   index of the record
+    -m, --metadata           Download ONLY all metadata files (without the data
+                                files)
+    -p, -repo, --process=<processID>
+                            Repository ID (a.k.a. ProcessID) of the repository
     -t, --token=<token>      Auth Token to pass when using Auth Passthrough Mode!
 
 
-To download the data from the content repositories we would need the unique identifier of the repository (process) which can be found from the previous step.
+To see the existing metadata records available in the content repository, we could issue following 
+command with the associated directory path to which we can download the metadata to.
+
+.. code-block: console
+
+    $java -jar leap_cli.jar download -m -p 6e9da372-8cc7-4b11-bf85-23ed9d83a301 -d ./output
+    
+    Saving metadata to /Users/Downloads/output/metadata/0/metadata.json
+    {
+    "displayName" : "WorkflowDemo1",
+    "taxonomyVersion" : {
+        "branch" : "master",
+        "id" : "AllLeap+TaxonomyBootcamp",
+        "url" : "wellcomewebgme.centralus.cloudapp.azure.com"
+    }
+    }
+    Saving metadata to /Users/Downloads/output/metadata/1/metadata.json
+    {
+    "displayName" : "WorkflowDemo1",
+    "taxonomyTags" : [ {
+        "DPActigraphy" : {
+        "collectionPeriod" : {
+            "End DateTime" : "1",
+            "Frequency" : "1",
+            "Start DateTime" : "1"
+        }
+        }
+    } ],
+    "taxonomyVersion" : {
+        "branch" : "master",
+        "id" : "AllLeap+TaxonomyBootcamp",
+        "url" : "wellcomewebgme.centralus.cloudapp.azure.com"
+    }
+    }
+    Saving metadata to /Users/Downloads/output/metadata/2/metadata.json
+    {
+    "displayName" : "WorkflowDemo1",
+    "taxonomyTags" : [ {
+        "DPActigraphy" : {
+        "collectionPeriod" : {
+            "End DateTime" : "1",
+            "Frequency" : "1",
+            "Start DateTime" : "1"
+        }
+        }
+    } ],
+    "taxonomyVersion" : {
+        "branch" : "master",
+        "id" : "AllLeap+TaxonomyBootcamp",
+        "url" : "wellcomewebgme.centralus.cloudapp.azure.com"
+    }
+    }
+
+
+
+To download the data from the content repositories we would need the unique identifier of the repository (repository ID) which can be found from the previous step.
 
 .. code-block:: console
 
-    $java -jar leap-cli.jar download -p 06ae4327-ad66-4608-b1eb-3655a5342d67 -d ./output
+    $java -jar leap_cli.jar download -p 6e9da372-8cc7-4b11-bf85-23ed9d83a301 -d ./output
+    Saving metadata to /Users/Downloads/output/metadata/14/metadata.json
+    Download Command Invoked.
+    =====================================
+    Downloading records from repository 6e9da372-8cc7-4b11-bf85-23ed9d83a301
+    Waiting for transfer to start....
+    Download started..
+    .............Downloading file: /Users/Downloads/output/dat/14/assembly_summary_genbank.txt
+    Remote File size 111678605
+    Starting Download..
+    Finished Downloading file: /Users/Downloads/output/dat/14/assembly_summary_genbank.txt
+    Downloading file: /Users/Downloads/output/dat/14/test/assembly_summary_refseq_historical.txt
+    Remote File size 2818004
+    Starting Download..
+    Finished Downloading file: /Users/ /Downloads/output/dat/14/test/assembly_summary_refseq_historical.txt
+    Downloading file: /Users/Downloads/output/dat/14/test/assembly_summary_genbank_historical.txt
+    Remote File size 3188527
+    Starting Download..
+    Finished Downloading file: /Users/ /Downloads/output/dat/14/test/assembly_summary_genbank_historical.txt
+    Downloading file: /Users/ /Downloads/output/dat/14/assembly_summary_refseq.txt
+    Remote File size 51436481
+    Starting Download..
+    Finished Downloading file: /Users/ /Downloads/output/dat/14/assembly_summary_refseq.txt
+    Downloading file: /Users/ /Downloads/output/dat/14/test/assembly_summary_genbank.txt
+    Remote File size 111678605
+    Starting Download..
+    Finished Downloading file: /Users/ /Downloads/output/dat/14/test/assembly_summary_genbank.txt
+    Downloading file: /Users/ /Downloads/output/dat/14/test/assembly_summary_refseq.txt
+    Remote File size 51436481
+    Starting Download..
+    Finished Downloading file: /Users/ /Downloads/output/dat/14/test/assembly_summary_refseq.txt
+    Downloading file: /Users/ /Downloads/output/dat/14/assembly_summary_refseq_historical.txt
+    Remote File size 2818004
+    Starting Download..
+    Finished Downloading file: /Users/ /Downloads/output/dat/14/assembly_summary_refseq_historical.txt
+    Downloading file: /Users/ /Downloads/output/dat/14/assembly_summary_genbank_historical.txt
+    Remote File size 3188527
+    Starting Download..
+    Finished Downloading file: /Users/ /Downloads/output/dat/14/assembly_summary_genbank_historical.txt
+    =====================================
+    Download Operation Completed
+    =====================================
+    ~/Downloads$
 
-    2023-01-10 10:24:21.288  INFO 96510 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Starting EnigmaApplicationKt using Java 17.0.2 on isislab with PID 96510 (/Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs/secretapp-0.0.1-SNAPSHOT.jar started by yogeshbarve in /Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs)
-    2023-01-10 10:24:21.292  INFO 96510 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : The following profiles are active: device
-    2023-01-10 10:24:22.832  INFO 96510 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Started EnigmaApplicationKt in 2.101 seconds (JVM running for 2.601)
-    2023-01-10 10:24:25.588  INFO 96510 --- [           main] common.services.TaxonomyServerClient     : URL: http://welcmewebgme.centralus.cloudapp.azure.com
-    2023-01-10 10:24:29.289  INFO 96510 --- [           main] command.DownloadCmd                      : Waiting for transfer to start.... 
-    2023-01-10 10:24:29.892  INFO 96510 --- [           main] command.DownloadCmd                      : .
-    2023-01-10 10:24:31.405  INFO 96510 --- [           main] command.DownloadCmd                      : .
-    2023-01-10 10:24:32.827  INFO 96510 --- [           main] command.DownloadCmd                      : .
-    2023-01-10 10:24:34.161  INFO 96510 --- [           main] command.DownloadCmd                      : .
-    2023-01-10 10:24:54.266  INFO 96510 --- [           main] command.DownloadCmd                      : .
-    2023-01-10 10:24:54.266  INFO 96510 --- [           main] command.DownloadCmd                      : Download started.. 
-    2023-01-10 10:24:54.268  INFO 96510 --- [           main] common.services.FileDownloader           : Current file: /Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs/output/dat/1/metadata.json
-    2023-01-10 10:24:54.470  INFO 96510 --- [           main] common.services.FileDownloader           : Remote File size 276
-    2023-01-10 10:24:54.473  INFO 96510 --- [           main] common.services.FileDownloader           : Local File Size 276
-    2023-01-10 10:24:54.618  INFO 96510 --- [           main] common.services.FileDownloader           : Current file: /Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs/output/dat/1/database.db
-    2023-01-10 10:24:55.088  INFO 96510 --- [           main] common.services.FileDownloader           : Remote File size 570281984
-    2023-01-10 10:24:55.088  INFO 96510 --- [           main] common.services.FileDownloader           : Local File Size 570281984
+We can now check the directory structure of the downloaded data.
+
+.. code-block:: console
+    ~/Downloads$tree ./output
+    ./output
+    ├── dat
+    │   └── 14
+    │       ├── assembly_summary_genbank.txt
+    │       ├── assembly_summary_genbank_historical.txt
+    │       ├── assembly_summary_refseq.txt
+    │       ├── assembly_summary_refseq_historical.txt
+    │       └── test
+    │           ├── assembly_summary_genbank.txt
+    │           ├── assembly_summary_genbank_historical.txt
+    │           ├── assembly_summary_refseq.txt
+    │           └── assembly_summary_refseq_historical.txt
+    └── metadata
+        ├── 0
+        │   └── metadata.json
+        ├── 1
+        │   └── metadata.json
+        ├── 10
+        │   └── metadata.json
+        ├── 11
+        │   └── metadata.json
+        ├── 12
+        │   └── metadata.json
+        ├── 13
+        │   └── metadata.json
+        ├── 14
+        │   └── metadata.json
+        ├── 2
+        │   └── metadata.json
+        ├── 3
+        │   └── metadata.json
+        ├── 4
+        │   └── metadata.json
+        ├── 5
+        │   └── metadata.json
+        ├── 6
+        │   └── metadata.json
+        ├── 7
+        │   └── metadata.json
+        ├── 8
+        │   └── metadata.json
+        └── 9
+            └── metadata.json
+
+    19 directories, 23 files
 
 
 Upload Data
@@ -117,24 +275,15 @@ To find the usage of the command execute following command:
 
 .. code-block:: console
 
-    $java -jar leap-cli.jar push -h
-    2023-01-10 10:34:44.240  INFO 96763 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Starting EnigmaApplicationKt using Java 17.0.2 on isislab with PID 96763 (/Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs/secretapp-0.0.1-SNAPSHOT.jar started by yogeshbarve in /Users/yogeshbarve/Projects/rest-tutorials/enigma/secretapp/build/libs)
-    2023-01-10 10:34:44.244  INFO 96763 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : The following profiles are active: device
-    2023-01-10 10:34:45.584  INFO 96763 --- [           main] e.v.e.secretapp.EnigmaApplicationKt      : Started EnigmaApplicationKt in 1.913 seconds (JVM running for 2.409)
-    Usage: <main class> upload [-h] -d=<dir> [-f=<metadata>] [-o=<observerID>]
-                            -p=<processID> [-t=<token>] [-validate -type=<type>
-                            -path=<path>]
-    -d, --dir=<dir>          Directory Path
-    -f=<metadata>            JSON file path of metadata for the observation
-    -h, --help               Utility for Test Commandline Options...
-    -o, --oid=<observerID>   Observer ID
-    -p, --process=<processID>
-                            ProcessID
-    -path=<path>         Taxonomy input source path - (file path/ URL address)
-    -t, --token=<token>      Auth Token to pass when using Auth Passthrough Mode!
-        -type=<type>         Taxonomy input source can be either of type either
-                                url or file
-        -validate
+    $java -jar leap_cli.jar upload -h
+    Usage: <main class> upload [-h] -d=<dir> [-f=<metadata>] -p=<processID>
+                            [-t=<token>]
+    -d, --dir=<dir>       Directory Path
+    -f=<metadata>         JSON file path of metadata for the record
+    -h, --help            Helps in uploading of records to a repository.
+    -p, -repo, --process=<processID>
+                            Repository ID (a.k.a. ProcessID) of the repository
+    -t, --token=<token>   Auth Token to pass when using Auth Passthrough Mode!
 
 
 To perform upload operation to the UDCP repositories one could execute following example command:
@@ -142,8 +291,28 @@ To perform upload operation to the UDCP repositories one could execute following
 
 .. code-block:: console
     
-    java -jar leap-cli.jar upload -p 06aewe7-ad66-4608-b1eb-3655a5342d67 -f  ./input/metadata.json -d ./input
-
+    $java -jar leap_cli.jar upload -p 6e9da372-8cc7-4b11-bf85-23ed9d83a301 -d ./output/dat/14/ -f ./output/metadata/14/metadata.json
+    Upload Command Invoked.
+    =====================================
+    Uploading records from output/dat/14 to repository 6e9da372-8cc7-4b11-bf85-23ed9d83a301
+    Uploading File: output/dat/14/test/assembly_summary_refseq_historical.txt
+    Finished Uploading: output/dat/14/test/assembly_summary_refseq_historical.txt
+    Uploading File: output/dat/14/test/assembly_summary_refseq.txt
+    Finished Uploading: output/dat/14/test/assembly_summary_refseq.txt
+    Uploading File: output/dat/14/test/assembly_summary_genbank_historical.txt
+    Finished Uploading: output/dat/14/test/assembly_summary_genbank_historical.txt
+    Uploading File: output/dat/14/test/assembly_summary_genbank.txt
+    Finished Uploading: output/dat/14/test/assembly_summary_genbank.txt
+    Uploading File: output/dat/14/assembly_summary_refseq_historical.txt
+    Finished Uploading: output/dat/14/assembly_summary_refseq_historical.txt
+    Uploading File: output/dat/14/assembly_summary_refseq.txt
+    Finished Uploading: output/dat/14/assembly_summary_refseq.txt
+    Uploading File: output/dat/14/assembly_summary_genbank_historical.txt
+    Finished Uploading: output/dat/14/assembly_summary_genbank_historical.txt
+    Uploading File: output/dat/14/assembly_summary_genbank.txt
+    Finished Uploading: output/dat/14/assembly_summary_genbank.txt
+    Upload Complete
+    =====================================
 
 Description:
 Here `-f` points to the metadata file.
