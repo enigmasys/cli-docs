@@ -176,7 +176,7 @@ To download the data from the content repositories we would need the unique iden
 
 .. code-block:: console
 
-    $java -jar leap_cli.jar download -p 6e9da372-8cc7-4b11-bf85-23ed9d83a301 -d ./output
+    $java -jar leap_cli.jar download -p 6e9da372-8cc7-4b11-bf85-23ed9d83a301 -d ./output -i 14
     Saving metadata to /Users/Downloads/output/metadata/14/metadata.json
     Download Command Invoked.
     =====================================
@@ -223,7 +223,7 @@ To download the data from the content repositories we would need the unique iden
 We can now check the directory structure of the downloaded data.
 
 .. code-block:: console
-    
+
     ~/Downloads$tree ./output
     ./output
     ├── dat
