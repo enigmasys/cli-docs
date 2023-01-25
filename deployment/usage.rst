@@ -44,6 +44,7 @@ Help listing for the user command can be invoked using the following command:
 To login issue following command:
 
  .. code-block:: console
+
     $java -jar leap_cli.jar user --login
     To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FPP2356LE to authenticate.
         {
@@ -61,6 +62,7 @@ When logged successfully, the user information is stored in the currently runnin
 To logout issue following command:
 
     .. code-block:: console
+
         $java -jar leap_cli.jar user --logout
         Login Functionality..
         User Logged out successful
@@ -118,7 +120,7 @@ To find the usage of the command execute following command:
 To see the existing metadata records available in the content repository, we could issue following 
 command with the associated directory path to which we can download the metadata to.
 
-.. code-block: console
+.. code-block:: console
 
     $java -jar leap_cli.jar download -m -p 6e9da372-8cc7-4b11-bf85-23ed9d83a301 -d ./output
     
@@ -221,6 +223,7 @@ To download the data from the content repositories we would need the unique iden
 We can now check the directory structure of the downloaded data.
 
 .. code-block:: console
+    
     ~/Downloads$tree ./output
     ./output
     ├── dat
