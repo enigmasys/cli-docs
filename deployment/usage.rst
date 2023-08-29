@@ -117,58 +117,59 @@ To find the usage of the command execute following command:
     -t, --token=<token>      Auth Token to pass when using Auth Passthrough Mode!
 
 
-To see the existing metadata records available in the content repository, we could issue following 
-command with the associated directory path to which we can download the metadata to.
 
-.. code-block:: console
+.. To see the existing metadata records available in the content repository, we could issue following 
+.. command with the associated directory path to which we can download the metadata to.
 
-    $java -jar leap_cli.jar download -m -p 6e9da372-8cc7-4b11-bf85-23ed9d83a301 -d ./output
+.. .. code-block:: console
+
+..     $java -jar leap_cli.jar download -m -p 6e9da372-8cc7-4b11-bf85-23ed9d83a301 -d ./output
     
-    Saving metadata to /Users/Downloads/output/metadata/0/metadata.json
-    {
-    "displayName" : "WorkflowDemo1",
-    "taxonomyVersion" : {
-        "branch" : "master",
-        "id" : "AllLeap+TaxonomyBootcamp",
-        "url" : "wellcomewebgme.centralus.cloudapp.azure.com"
-    }
-    }
-    Saving metadata to /Users/Downloads/output/metadata/1/metadata.json
-    {
-    "displayName" : "WorkflowDemo1",
-    "taxonomyTags" : [ {
-        "DPActigraphy" : {
-        "collectionPeriod" : {
-            "End DateTime" : "1",
-            "Frequency" : "1",
-            "Start DateTime" : "1"
-        }
-        }
-    } ],
-    "taxonomyVersion" : {
-        "branch" : "master",
-        "id" : "AllLeap+TaxonomyBootcamp",
-        "url" : "wellcomewebgme.centralus.cloudapp.azure.com"
-    }
-    }
-    Saving metadata to /Users/Downloads/output/metadata/2/metadata.json
-    {
-    "displayName" : "WorkflowDemo1",
-    "taxonomyTags" : [ {
-        "DPActigraphy" : {
-        "collectionPeriod" : {
-            "End DateTime" : "1",
-            "Frequency" : "1",
-            "Start DateTime" : "1"
-        }
-        }
-    } ],
-    "taxonomyVersion" : {
-        "branch" : "master",
-        "id" : "AllLeap+TaxonomyBootcamp",
-        "url" : "wellcomewebgme.centralus.cloudapp.azure.com"
-    }
-    }
+..     Saving metadata to /Users/Downloads/output/metadata/0/metadata.json
+..     {
+..     "displayName" : "WorkflowDemo1",
+..     "taxonomyVersion" : {
+..         "branch" : "master",
+..         "id" : "AllLeap+TaxonomyBootcamp",
+..         "url" : "wellcomewebgme.centralus.cloudapp.azure.com"
+..     }
+..     }
+..     Saving metadata to /Users/Downloads/output/metadata/1/metadata.json
+..     {
+..     "displayName" : "WorkflowDemo1",
+..     "taxonomyTags" : [ {
+..         "DPActigraphy" : {
+..         "collectionPeriod" : {
+..             "End DateTime" : "1",
+..             "Frequency" : "1",
+..             "Start DateTime" : "1"
+..         }
+..         }
+..     } ],
+..     "taxonomyVersion" : {
+..         "branch" : "master",
+..         "id" : "AllLeap+TaxonomyBootcamp",
+..         "url" : "wellcomewebgme.centralus.cloudapp.azure.com"
+..     }
+..     }
+..     Saving metadata to /Users/Downloads/output/metadata/2/metadata.json
+..     {
+..     "displayName" : "WorkflowDemo1",
+..     "taxonomyTags" : [ {
+..         "DPActigraphy" : {
+..         "collectionPeriod" : {
+..             "End DateTime" : "1",
+..             "Frequency" : "1",
+..             "Start DateTime" : "1"
+..         }
+..         }
+..     } ],
+..     "taxonomyVersion" : {
+..         "branch" : "master",
+..         "id" : "AllLeap+TaxonomyBootcamp",
+..         "url" : "wellcomewebgme.centralus.cloudapp.azure.com"
+..     }
+..     }
 
 
 
@@ -294,7 +295,7 @@ To perform upload operation to the UDCP repositories one could execute following
 
 .. code-block:: console
     
-    $java -jar leap_cli.jar upload -p 6e9da372-8cc7-4b11-bf85-23ed9d83a301 -d ./output/dat/14/ -f ./output/metadata/14/metadata.json
+    $java -jar leap_cli.jar upload -p 6e9da372-8cc7-4b11-bf85-23ed9d83a301 -d ./output/dat/14/ -f ./output/metadata.json
     Upload Command Invoked.
     =====================================
     Uploading records from output/dat/14 to repository 6e9da372-8cc7-4b11-bf85-23ed9d83a301
@@ -320,3 +321,23 @@ To perform upload operation to the UDCP repositories one could execute following
 Description:
 Here `-f` points to the metadata file.
 `-d` points to the input directory to be uploaded to the content repository.
+
+
+Check the CLI Version
+--------------
+
+To check the version of the CLI tool, issue following command:
+
+.. code-block:: console
+
+    $java -jar leap_cli.jar -V
+    Current CLI Version is: v0.1.0
+    Checking for updates...
+    ===========================================
+    Latest Release: v0.1.0  was published at: 2023-08-29T20:55:38Z
+    Latest Release can be found at https://github.com/enigmasys/enigma/releases/tag/v0.1.0
+    This CLI version is up to date.
+    ===========================================
+    Current CLI Version: v0.1.0
+    Latest Release Version: v0.1.0
+
