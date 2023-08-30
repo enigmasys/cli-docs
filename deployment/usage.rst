@@ -29,8 +29,8 @@ To see the list of available options invoke the executable help command:
 Configuration of the CLI
 ------------------------
 The CLI tool requires the configuration to be set before it can be used to access the UDCP.
-We can set set the configuration by creating `application.yml` file and saving it next to the executable `leap_cli.jar` file.
-An example `application.yaml` file is provided below:
+We can set set the configuration by creating application.yml file and saving it next to the executable leap_cli.jar file.
+An example application.yml file is provided below:
 
 .. code-block:: yaml
 
