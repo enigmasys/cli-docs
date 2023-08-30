@@ -16,6 +16,6 @@ Current releases of the UDCP CLI can be found from the project site.
 
 Release Notes
 v0.1.0 : Bootcamp release August 2023 of the UDCP CLI
-Download path for LEAP_CLI.jar from : `Download https://github.com/enigmasys/enigma/releases/`_
+Download path for LEAP_CLI.jar from : `Download From the Github Page: <https://github.com/enigmasys/enigma/releases/>`_
 
 
