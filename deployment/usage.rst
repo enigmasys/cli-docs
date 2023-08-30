@@ -272,6 +272,37 @@ We can now check the directory structure of the downloaded data.
 
     19 directories, 23 files
 
+Download Using URI 
+------------------
+To download the data from the repositories using the URI, we would need to have the URI associated with the content.
+One approach to acquire the URI is to capture the URI through the UDCP web data dashboard.
+
+
+.. code-block:: console
+
+    ~/Downloads$java -jar leap_cli.jar download --uri pdp://leappremonitiondev.azurewebsites.net/vutest/ae0f62d0-854b-4696-8c7d-54e89e04308e/121/0 -d ./output
+    dir: ./output
+    =====================================
+    Starting Download Operation
+    =====================================
+    contentType: Bootcamp Sandbox
+    repoId: ae0f62d0-854b-4696-8c7d-54e89e04308e indexList: [121_0]
+    Downloading dat/121/0/tags - 2023-08-29T120707.732.json from https://leapdevelopmentblob.blob.core.windows.net/be73-ee2cb19f556e/dat%2F121%2F0%2Ftags - 2023-08-29T120707.732.json?sv=2020-04-08&se=2023-08-30T11%3A17%3A01Z&sr=b&sp=r&sig=CFyDXnVcb2GI5S%2FHwrXqjEpML6n4hl2hLklcRCrL25U%3D
+    =====================================
+    Download Operation Completed
+    =====================================
+    ~/Projects/rest-tutorials/enigma/client/build/libs$tree ./output/
+    ./output/
+    ├── dat
+    │   └── 121
+    │       └── 0
+    │           └── tags - 2023-08-29T120707.732.json
+    └── metadata.json
+
+    3 directories, 2 files
+
+
+
 
 Upload Data
 --------------
