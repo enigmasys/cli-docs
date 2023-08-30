@@ -72,13 +72,8 @@ To login issue following command:
  .. code-block:: console
 
     $java -jar leap_cli.jar user --login
-    To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FPP2356LE to authenticate.
-        {
-    "userId" : "qweaf4-asdwae-49bd-9997-asd345",
-    "permission" : "Administrator",
-    "administrator" : false,
-    "registrationApprover" : false
-    }
+    To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the to authenticate.
+     ....
 
 The user will need to provide the code displayed on the console to the browser to login to the UDCP. Accept any security permissions asked.
 If the user has the required permission to the UDCP, the user will be logged in successfully.
