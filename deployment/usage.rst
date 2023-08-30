@@ -25,6 +25,32 @@ To see the list of available options invoke the executable help command:
     download, pull
     userinfo, user
 
+
+Configuration of the CLI
+------------------------
+The CLI tool requires the configuration to be set before it can be used to access the UDCP.
+We can set set the configuration by creating `application.yml` file and saving it next to the executable `leap_cli.jar` file.
+An example `application.yaml` file is provided below:
+
+.. code-block:: yaml
+
+    cliclient:
+        TOKEN_CACHE_FILE_PATH: ".authentication_cache.json"
+        TaxonomyServer:
+            ServiceUrl: "https://leapstage.centralus.cloudapp.azure.com/"
+            ProjectID: "AllLeap+TaxonomyBootcamp"
+            ProjectType: "branch"
+            ProjectTypeValue: "master"
+            CookieName: "udcp_taxonomy_aad"
+
+
+Here we are setting the `TOKEN_CACHE_FILE_PATH` to `.authentication_cache.json` which will be used to store the authentication token.
+Next, we are setting the `TaxonomyServer` configuration which is used to access the Taxonomy Design Studio server.
+The `ServiceUrl` is the URL of the Taxonomy Design Studio server. The `ProjectID` is the unique identifier of the taxonomy project.
+The `ProjectType` is the type of the project which we are querying against. It can be either `commit`, `branch`, or `tag`. 
+The `ProjectTypeValue` is the value of the project type.
+
+
 Login
 ------
 
