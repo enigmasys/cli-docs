@@ -331,15 +331,17 @@ To find the usage of the command execute following command:
 
 .. code-block:: console
 
-    $java -jar leap_cli.jar upload -h
-    Usage: <main class> upload [-h] -d=<dir> [-f=<metadata>] -p=<processID>
-                            [-t=<token>]
-    -d, --dir=<dir>       Directory Path
-    -f=<metadata>         JSON file path of metadata for the record
-    -h, --help            Helps in uploading of records to a repository.
+    java -jar leap_cli.jar upload -h
+    Usage: <main class> upload [-h] -d=<dir> [-f=<metadata>] [-m=<displayName>]
+                            -p=<processID> [-t=<token>]
+    -d, --dir=<dir>          Directory Path
+    -f=<metadata>            JSON file path of metadata for the record
+    -h, --help               Helps in uploading of records to a repository.
+    -m, -msg=<displayName>   Add a description to the uploads
     -p, -repo, --process=<processID>
                             Repository ID (a.k.a. ProcessID) of the repository
-    -t, --token=<token>   Auth Token to pass when using Auth Passthrough Mode!
+    -t, --token=<token>      Auth Token to pass when using Auth Passthrough Mode!
+
 
 
 To perform upload operation to the UDCP repositories one could execute following example command:
