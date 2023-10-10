@@ -26,22 +26,23 @@ To see the list of available options invoke the executable help command:
     userinfo, user
 
 
-Configuration of the CLI
+Advanced Configuration of the CLI
 ------------------------
-The CLI tool requires the configuration to be set before it can be used to access the UDCP.
-We can set set the configuration by creating application.yml file and saving it next to the executable leap_cli.jar file.
+This step is not required with the executable jar file. However, if one needs to update the default taxonomy project and 
+the server details and token cache file path, one can configure them. We can set the configuration by creating application.yml file 
+and saving it next to the executable leap_cli.jar file.
+
 An example application.yml file is provided below:
 
 .. code-block:: yaml
 
     cliclient:
-        TOKEN_CACHE_FILE_PATH: ".authentication_cache.json"
-        TaxonomyServer:
-            ServiceUrl: "https://leapstage.centralus.cloudapp.azure.com/"
-            ProjectID: "AllLeap+TaxonomyBootcamp"
-            ProjectType: "branch"
-            ProjectTypeValue: "master"
-            CookieName: "udcp_taxonomy_aad"
+    TOKEN_CACHE_FILE_PATH: ".authentication_cache.json"
+    TaxonomyServer:
+        ServiceUrl: "https://wellcomewebgme.centralus.cloudapp.azure.com/"
+        ProjectID: "AllLeap+MCPyschTaxonomy"
+        ProjectType: "tag"
+        ProjectTypeValue: "latest"
 
 
 Here we are setting the `TOKEN_CACHE_FILE_PATH` to `.authentication_cache.json` which will be used to store the authentication token.
