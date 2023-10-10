@@ -26,32 +26,6 @@ To see the list of available options invoke the executable help command:
     userinfo, user
 
 
-Advanced Configuration of the CLI
-------------------------
-This step is not required with the executable jar file. However, if one needs to update the default taxonomy project and 
-the server details and token cache file path, one can configure them. We can set the configuration by creating application.yml file 
-and saving it next to the executable leap_cli.jar file.
-
-An example application.yml file is provided below:
-
-.. code-block:: yaml
-
-    cliclient:
-    TOKEN_CACHE_FILE_PATH: ".authentication_cache.json"
-    TaxonomyServer:
-        ServiceUrl: "https://wellcomewebgme.centralus.cloudapp.azure.com/"
-        ProjectID: "AllLeap+MCPyschTaxonomy"
-        ProjectType: "tag"
-        ProjectTypeValue: "latest"
-
-
-Here we are setting the `TOKEN_CACHE_FILE_PATH` to `.authentication_cache.json` which will be used to store the authentication token.
-Next, we are setting the `TaxonomyServer` configuration which is used to access the Taxonomy Design Studio server.
-The `ServiceUrl` is the URL of the Taxonomy Design Studio server. The `ProjectID` is the unique identifier of the taxonomy project.
-The `ProjectType` is the type of the project which we are querying against. It can be either `commit`, `branch`, or `tag`. 
-The `ProjectTypeValue` is the value of the project type.
-
-
 Login
 ------
 
@@ -396,3 +370,28 @@ To check the version of the CLI tool, issue following command:
     Current CLI Version: v0.1.0
     Latest Release Version: v0.1.0
 
+
+Advanced Configuration of the CLI
+------------------------
+This step is not required with the executable jar file. However, if one needs to update the default taxonomy project and 
+the server details and token cache file path, one can configure them. We can set the configuration by creating application.yml file 
+and saving it next to the executable leap_cli.jar file.
+
+An example application.yml file is provided below:
+
+.. code-block:: yaml
+
+    cliclient:
+    TOKEN_CACHE_FILE_PATH: ".authentication_cache.json"
+    TaxonomyServer:
+        ServiceUrl: "https://wellcomewebgme.centralus.cloudapp.azure.com/"
+        ProjectID: "AllLeap+MCPyschTaxonomy"
+        ProjectType: "tag"
+        ProjectTypeValue: "latest"
+
+
+Here we are setting the `TOKEN_CACHE_FILE_PATH` to `.authentication_cache.json` which will be used to store the authentication token.
+Next, we are setting the `TaxonomyServer` configuration which is used to access the Taxonomy Design Studio server.
+The `ServiceUrl` is the URL of the Taxonomy Design Studio server. The `ProjectID` is the unique identifier of the taxonomy project.
+The `ProjectType` is the type of the project which we are querying against. It can be either `commit`, `branch`, or `tag`. 
+The `ProjectTypeValue` is the value of the project type.
